@@ -12,6 +12,7 @@ describe('My ninth test suite', function () {
         })
     })
     it('My ninth test case', function () {
+
         const homePage = new HomePage()
         const products = new Products()
         cy.visit("https://rahulshettyacademy.com/angularpractice/")
@@ -50,6 +51,21 @@ describe('My ninth test suite', function () {
         })
         //cy.get('#navbarResponsive > .navbar-nav > .nav-item > .nav-link').click()
         products.checkOutButton().click()
+        cy.get('tr td:nth-child(4) strong').each(($el, index, $list) => {
+            cy.log($el.text())
+        })
+        cy.contains('Checkout').click()
+        cy.get('#country').type('India')
+        cy.wait(8000)
+        cy.get('.suggestions > ul > li > a').click()
+        cy.get('.checkbox').click()
+        cy.get('input[type="submit"]').click()
+        //cy.get('.alert').should('have.text', 'Success! Thank you! Your order will be delivered in next few weeks :-).') - have.text poredi ceo text
+        cy.get('.alert').then(function (element) {
+            const actualText = element.text()
+            var res = actualText.split(" ")
+            expect(actualText.includes("Success")).to.be.true
+        })
 
 
 
