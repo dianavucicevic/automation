@@ -15,7 +15,7 @@ describe('My ninth test suite', function () {
 
         const homePage = new HomePage()
         const products = new Products()
-        cy.visit("https://rahulshettyacademy.com/angularpractice/")
+        cy.visit(Cypress.env('url')) //+"//AutomationPractice/" 
         //cy.get('input[name="name"]:nth-child(2)').type(this.data.name)
         homePage.getEditBox().type(this.data.name)
         //cy.get('select').select(this.data.gender)
@@ -51,19 +51,40 @@ describe('My ninth test suite', function () {
         })
         //cy.get('#navbarResponsive > .navbar-nav > .nav-item > .nav-link').click()
         products.checkOutButton().click()
+
+        var sum = 0
         cy.get('tr td:nth-child(4) strong').each(($el, index, $list) => {
-            cy.log($el.text())
+            const amount = $el.text()
+            var res = amount.split(" ")
+            res = res[1].trim()
+            sum = Number(sum) + Number(res)
+            
+        }).then(function()
+        {
+            cy.log(sum)
         })
+
+
+        cy.get('h3 strong').then(function(element)
+        {
+           const amount= element.text()
+           var res=amount.split(" ")
+           var total = res[1].trim()
+           expect(Number(total)).to.equal(sum)
+
+        })
+
         cy.contains('Checkout').click()
         cy.get('#country').type('India')
         cy.wait(8000)
         cy.get('.suggestions > ul > li > a').click()
         cy.get('.checkbox').click()
         cy.get('input[type="submit"]').click()
+
         //cy.get('.alert').should('have.text', 'Success! Thank you! Your order will be delivered in next few weeks :-).') - have.text poredi ceo text
+
         cy.get('.alert').then(function (element) {
             const actualText = element.text()
-            var res = actualText.split(" ")
             expect(actualText.includes("Success")).to.be.true
         })
 

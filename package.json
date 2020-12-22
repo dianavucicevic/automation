@@ -1,0 +1,23 @@
+{
+  "name": "cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dianavucicevic/automation.git"
+  },
+  "author": "diana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dianavucicevic/automation/issues"
+  },
+  "homepage": "https://github.com/dianavucicevic/automation#readme",
+  "devDependencies": {
+    "cypress-iframe": "^1.0.1"
+  },
+  "dependencies": {}
+}

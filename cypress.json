@@ -1,5 +1,9 @@
-{"modifyObstructiveCode": true,
-
-    "experimentalSourceRewriting":false,
-    
-    "chromeWebSecurity": true}
+{
+  "modifyObstructiveCode": true,
+  "experimentalSourceRewriting": false,
+  "chromeWebSecurity": true,
+  "env": {
+    "url": "https://rahulshettyacademy.com/angularpractice/"
+  },
+  "projectId": "b4o2xp"
+}
